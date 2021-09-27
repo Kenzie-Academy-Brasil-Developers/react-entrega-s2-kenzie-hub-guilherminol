@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Form, Title } from "./style.js";
 import { Link } from "react-router-dom";
+import api from "../../services/api.js";
+import { useHistory } from "react-router";
 
 const Register = () => {
   const formSchema = yup.object().shape({
@@ -29,17 +31,25 @@ const Register = () => {
     return {
       email: email,
       password: senha,
+      name: nome,
       bio: bio,
       contact: contato,
-      couse_module: modulo,
+      course_module: modulo,
     };
   };
+  const history = useHistory();
   const onSubmitFunction = (data) => {
     const user = HandleUser(data);
+    api
+      .post("/users", user)
+      .then((response) => history.push("/Login"))
+      .catch((err) => {
+        alert(err);
+      });
   };
   return (
     <>
-      <Title> Bem vindo a Kenzie! Cadastre-se</Title>
+      <Title> Bem vindo a Kenzie, Cadastre-se!</Title>
       <Form onSubmit={handleSubmit(onSubmitFunction)}>
         <div>
           <label>

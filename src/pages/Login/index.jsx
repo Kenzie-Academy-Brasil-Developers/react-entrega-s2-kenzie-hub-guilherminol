@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Form, Title } from "./style.js";
 import { Link } from "react-router-dom";
+import api from "../../services/api.js";
 
 const Login = () => {
   const formSchema = yup.object().shape({
@@ -18,11 +19,23 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
   const onSubmitFunction = (data) => {
-    console.log(data);
+    const user = { email: data.email, password: data.senha };
+    api
+      .post("/sessions", user)
+      .then((response) => {
+        window.localStorage.clear();
+        window.localStorage.setItem(
+          "token",
+          JSON.stringify(response.data.token)
+        );
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
   return (
     <>
-      <Title> Bem vindo a Kenzie! Faça seu Login</Title>
+      <Title> Bem vindo a Kenzie, Faça seu Login!</Title>
       <Form onSubmit={handleSubmit(onSubmitFunction)}>
         <label>
           <p>
@@ -41,7 +54,7 @@ const Login = () => {
         <Link to="/Login">Não é inscrito? faça sua inscrição</Link>
 
         <Button variant="outlined" type="submit">
-          Cadastrar
+          Login
         </Button>
       </Form>
     </>
