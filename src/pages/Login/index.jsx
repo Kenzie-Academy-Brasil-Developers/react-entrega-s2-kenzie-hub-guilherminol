@@ -52,7 +52,7 @@ const Login = ({ isLogged, setIsLogged }) => {
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <label>
             <p>
-              Email: <span>{errors.email?.message}</span>:
+              Email: <span>{errors.email?.message}</span>
             </p>
             <TextField size="small" label="Email" {...register("email")} />
           </label>

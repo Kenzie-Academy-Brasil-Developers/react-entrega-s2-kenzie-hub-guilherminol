@@ -2,10 +2,11 @@ import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Form, Title } from "./style.js";
+import { Form, Title, Container } from "./style.js";
 import { Link, Redirect } from "react-router-dom";
 import api from "../../services/api.js";
 import { useHistory } from "react-router";
+import image from "../../images/programmer2.png";
 
 const Register = ({ isLogged }) => {
   const formSchema = yup.object().shape({
@@ -51,83 +52,90 @@ const Register = ({ isLogged }) => {
     return <Redirect to="/Dashboard"></Redirect>;
   }
   return (
-    <>
-      <Title> Bem vindo a Kenzie, Cadastre-se!</Title>
-      <Form onSubmit={handleSubmit(onSubmitFunction)}>
-        <div>
-          <label>
-            <p>
-              Nome: <span>{errors.nome?.message}</span>
-            </p>
-            <TextField size="small" label="Nome" {...register("nome")} />
-          </label>
-          <label>
-            <p>
-              Email: <span>{errors.email?.message}</span>:
-            </p>
-            <TextField size="small" label="Email" {...register("email")} />
-          </label>
-        </div>
+    <Container>
+      <div className="Content">
+        <Title>
+          {" "}
+          Bem vindo a <span>Kenzie</span>, Cadastre-se!
+        </Title>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
+          <div>
+            <label>
+              <p>
+                Nome: <span>{errors.nome?.message}</span>
+              </p>
+              <TextField size="small" label="Nome" {...register("nome")} />
+            </label>
+            <label>
+              <p>
+                Email: <span>{errors.email?.message}</span>
+              </p>
+              <TextField size="small" label="Email" {...register("email")} />
+            </label>
+          </div>
 
-        <div>
+          <div>
+            <label>
+              <p>
+                Senha: <span>{errors.senha?.message}</span>
+              </p>
+              <TextField size="small" label="Senha" {...register("senha")} />
+            </label>
+            <label>
+              <p>
+                Confirme a senha:{" "}
+                <span>{errors.confirmacaoSenha?.message}</span>
+              </p>
+              <TextField
+                size="small"
+                label="Confirme a senha"
+                {...register("confirmacaoSenha")}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              <p>
+                Módulo: <span>{errors.modulo?.message}</span>
+              </p>
+              <TextField
+                size="small"
+                label="Informe seu módulo"
+                {...register("modulo")}
+              />
+            </label>
+            <label>
+              <p>
+                Contato: <span>{errors.contato?.message}</span>
+              </p>
+              <TextField
+                size="small"
+                label="Passe seu contato"
+                {...register("contato")}
+              />
+            </label>
+          </div>
           <label>
             <p>
-              Senha: <span>{errors.senha?.message}</span>
-            </p>
-            <TextField size="small" label="Senha" {...register("senha")} />
-          </label>
-          <label>
-            <p>
-              Confirme a senha: <span>{errors.confirmacaoSenha?.message}</span>
+              Bio: <span>{errors.bio?.message}</span>
             </p>
             <TextField
               size="small"
-              label="Confirme a senha"
-              {...register("confirmacaoSenha")}
+              label="Fale sobre você"
+              {...register("bio")}
+              multiline
             />
           </label>
-        </div>
+          <Link to="/Login">Já é inscrito? faça Login</Link>
 
-        <div>
-          <label>
-            <p>
-              Módulo: <span>{errors.modulo?.message}</span>
-            </p>
-            <TextField
-              size="small"
-              label="Informe seu módulo"
-              {...register("modulo")}
-            />
-          </label>
-          <label>
-            <p>
-              Contato: <span>{errors.contato?.message}</span>
-            </p>
-            <TextField
-              size="small"
-              label="Passe seu contato"
-              {...register("contato")}
-            />
-          </label>
-        </div>
-        <label>
-          <p>
-            Bio: <span>{errors.bio?.message}</span>
-          </p>
-          <TextField
-            size="small"
-            label="Fale sobre você"
-            {...register("bio")}
-            multiline
-          />
-        </label>
-        <Link to="/Login">Já é inscrito? faça Login</Link>
-
-        <Button variant="outlined" type="submit">
-          Cadastrar
-        </Button>
-      </Form>
-    </>
+          <Button variant="outlined" type="submit">
+            Cadastrar
+          </Button>
+        </Form>
+      </div>
+      <img src={image} alt="" />
+    </Container>
   );
 };
 export default Register;

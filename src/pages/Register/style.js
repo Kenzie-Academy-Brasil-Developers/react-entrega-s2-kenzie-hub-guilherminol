@@ -4,7 +4,7 @@ export const Form = styled.form`
   flex-direction: column;
   width: 500px;
   justify-content: space-around;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   Button {
     width: 229px;
@@ -32,6 +32,25 @@ export const Form = styled.form`
   }
 `;
 export const Title = styled.h1`
-  color: #007aff;
+  color: #212121;
   text-align: center;
+  span {
+    color: #007aff;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  img {
+    width: 60%;
+    height: 100vh;
+    filter: grayscale(1);
+  }
+  .Content {
+    background-color: #fff;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
