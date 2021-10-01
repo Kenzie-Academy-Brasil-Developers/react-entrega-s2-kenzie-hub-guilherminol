@@ -4,10 +4,9 @@ export const Form = styled.form`
   flex-direction: column;
   width: 250px;
   justify-content: space-around;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   Button {
-    width: 229px;
     height: 50%;
     margin: 30px auto 0 auto;
   }
@@ -24,6 +23,9 @@ export const Form = styled.form`
     color: #007aff;
     text-decoration: none;
   }
+  a:hover {
+    text-decoration: underline;
+  }
   span {
     color: red;
   }
@@ -32,6 +34,25 @@ export const Form = styled.form`
   }
 `;
 export const Title = styled.h1`
-  color: #007aff;
+  color: #212121;
   text-align: center;
+  span {
+    color: #007aff;
+  }
+`;
+export const Container = styled.div`
+  display: flex;
+  background-color: #212121;
+  img {
+    width: 60%;
+    height: 100vh;
+    filter: grayscale(1);
+  }
+  img + div {
+    background-color: #fff;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;

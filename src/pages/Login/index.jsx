@@ -1,10 +1,12 @@
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Button } from "../../components/Button/style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Form, Title } from "./style.js";
+import { Form, Title, Container } from "./style.js";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api.js";
+import imageProgrammer from "../../images/Programmer.png";
 
 const Login = ({ isLogged, setIsLogged }) => {
   const formSchema = yup.object().shape({
@@ -40,30 +42,34 @@ const Login = ({ isLogged, setIsLogged }) => {
     return <Redirect to="/Dashboard"></Redirect>;
   }
   return (
-    <>
-      <Title> Bem vindo a Kenzie, Faça seu Login!</Title>
-      <Form onSubmit={handleSubmit(onSubmitFunction)}>
-        <label>
-          <p>
-            Email: <span>{errors.email?.message}</span>:
-          </p>
-          <TextField size="small" label="Email" {...register("email")} />
-        </label>
+    <Container>
+      <img src={imageProgrammer} alt="Programmer codding" />
+      <div>
+        <Title>
+          {" "}
+          Bem vindo de volta a <span>Kenzie</span> <br /> Faça seu Login!
+        </Title>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
+          <label>
+            <p>
+              Email: <span>{errors.email?.message}</span>:
+            </p>
+            <TextField size="small" label="Email" {...register("email")} />
+          </label>
 
-        <label>
-          <p>
-            Senha: <span>{errors.senha?.message}</span>
-          </p>
-          <TextField size="small" label="Senha" {...register("senha")} />
-        </label>
+          <label>
+            <p>
+              Senha: <span>{errors.senha?.message}</span>
+            </p>
+            <TextField size="small" label="Senha" {...register("senha")} />
+          </label>
 
-        <Link to="/">Não é inscrito? faça sua inscrição</Link>
+          <Link to="/Register">Não é inscrito? Faça sua inscrição</Link>
 
-        <Button variant="outlined" type="submit">
-          Login
-        </Button>
-      </Form>
-    </>
+          <Button>Login</Button>
+        </Form>
+      </div>
+    </Container>
   );
 };
 export default Login;
