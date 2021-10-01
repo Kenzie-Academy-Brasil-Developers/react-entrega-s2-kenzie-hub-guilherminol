@@ -3,11 +3,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Form, Title } from "./style.js";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import api from "../../services/api.js";
 import { useHistory } from "react-router";
 
-const Register = () => {
+const Register = ({ isLogged }) => {
   const formSchema = yup.object().shape({
     nome: yup.string().required("Campo Obrigatório"),
     email: yup.string().required("Campo Obrigatório"),
@@ -47,6 +47,9 @@ const Register = () => {
         alert(err);
       });
   };
+  if (isLogged) {
+    return <Redirect to="/Dashboard"></Redirect>;
+  }
   return (
     <>
       <Title> Bem vindo a Kenzie, Cadastre-se!</Title>
