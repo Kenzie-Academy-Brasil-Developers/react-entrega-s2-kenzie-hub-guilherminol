@@ -7,17 +7,24 @@ export const Container = styled.div`
     color: #fff;
     margin: 0;
     text-align: center;
-    padding: 50px;
+    padding: 20px;
   }
   h2 {
     text-align: center;
   }
+  Button {
+    width: fit-content;
+  }
 `;
-export const Tecnologias = styled.div`
+export const FormContainer = styled.form`
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
   background-color: lightgrey;
-  width: 80%;
-  height: 700px;
+  width: 50%;
+  height: 300px;
   margin: 0 auto 30px auto;
   border-radius: 30px;
 `;

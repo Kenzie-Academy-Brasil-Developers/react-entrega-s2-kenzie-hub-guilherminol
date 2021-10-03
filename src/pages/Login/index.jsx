@@ -66,7 +66,7 @@ const Login = ({ isLogged, setIsLogged }) => {
 
           <Link to="/Register">Não é inscrito? Faça sua inscrição</Link>
 
-          <Button>Login</Button>
+          <Button type="submit">Login</Button>
         </Form>
       </div>
     </Container>

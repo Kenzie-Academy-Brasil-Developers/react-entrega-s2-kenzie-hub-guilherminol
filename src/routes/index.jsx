@@ -3,6 +3,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
+import AddTech from "../pages/AddTech";
 import { useEffect, useState } from "react";
 const Routes = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -21,8 +22,11 @@ const Routes = () => {
       <Route path="/Login">
         <Login isLogged={isLogged} setIsLogged={setIsLogged}></Login>
       </Route>
-      <Route path="/Dashboard">
+      <Route exact path="/Dashboard">
         <Dashboard isLogged={isLogged}></Dashboard>
+      </Route>
+      <Route path="/Dashboard/AddTech">
+        <AddTech></AddTech>
       </Route>
     </Switch>
   );
