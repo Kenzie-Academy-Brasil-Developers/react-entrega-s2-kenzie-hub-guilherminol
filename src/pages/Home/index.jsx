@@ -10,7 +10,7 @@ const Home = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/contact">Contatos</Link>
+              <Link to="/Contact">Contatos</Link>
             </li>
             <li>
               <Button onClick={() => history.push("/login")}>Login</Button>
