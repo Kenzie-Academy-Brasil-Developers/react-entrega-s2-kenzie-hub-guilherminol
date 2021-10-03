@@ -12,12 +12,22 @@ export const Container = styled.div`
   h2 {
     text-align: center;
   }
+  Button {
+    width: fit-content;
+  }
 `;
 export const Tecnologias = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
   background-color: lightgrey;
   width: 80%;
-  height: 700px;
+  height: fit-content;
   margin: 0 auto 30px auto;
   border-radius: 30px;
+`;
+export const TechContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
