@@ -14,6 +14,7 @@ import InputLabel from "@mui/material/InputLabel";
 
 const AddTech = () => {
   const userToken = JSON.parse(window.localStorage.getItem("token"));
+  const userId = JSON.parse(window.localStorage.getItem("user")).id;
   const history = useHistory();
   const [statusTech, setStatusTech] = useState("Iniciante");
 
@@ -42,8 +43,16 @@ const AddTech = () => {
       },
     })
       .then((response) => {
-        console.log(response);
+        axios
+          .get(`https://kenziehub.herokuapp.com/users/${userId}`)
+          .then((response) => {
+            window.localStorage.setItem("user", JSON.stringify(response.data));
+          })
+          .then((response) => {
+            history.push("/Dashboard");
+          });
       })
+
       .catch((err) => {
         console.log(err);
       });

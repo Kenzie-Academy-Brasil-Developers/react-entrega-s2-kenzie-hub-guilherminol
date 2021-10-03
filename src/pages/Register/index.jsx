@@ -1,4 +1,5 @@
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import { Button } from "../../components/Button/style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -129,9 +130,7 @@ const Register = ({ isLogged }) => {
           </label>
           <Link to="/Login">Já é inscrito? faça Login</Link>
 
-          <Button variant="outlined" type="submit">
-            Cadastrar
-          </Button>
+          <Button type="submit">Cadastrar</Button>
         </Form>
       </div>
       <img src={image} alt="" />

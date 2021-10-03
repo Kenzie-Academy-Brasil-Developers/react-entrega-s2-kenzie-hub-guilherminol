@@ -2,21 +2,32 @@ import { Redirect, useHistory } from "react-router-dom";
 import { Container, Tecnologias, TechContainer } from "./style";
 import TechnologyCard from "../../components/TechnologyCard";
 import { Button } from "../../components/Button/style.js";
+import { useState } from "react";
+import Header from "../../components/Header";
 
-const Dashboard = ({ isLogged }) => {
+const Dashboard = ({ setIsLogged, isLogged }) => {
   const history = useHistory();
+  const [user, setUser] = useState(
+    JSON.parse(window.localStorage.getItem("user"))
+  );
 
   if (!isLogged) return <Redirect to="/"></Redirect>;
-  const user = JSON.parse(window.localStorage.getItem("user"));
   const techniqueList = user.techs;
   return (
     <Container>
+      <Header setIsLogged={setIsLogged}></Header>
       <h1>Bem vindo, {user.name.split(" ")[0]}</h1>
       <Tecnologias>
         <h2>Suas Tecnologias: </h2>
         <TechContainer>
           {techniqueList.map((item, key) => {
-            return <TechnologyCard key={key} item={item}></TechnologyCard>;
+            return (
+              <TechnologyCard
+                setUser={setUser}
+                key={key}
+                item={item}
+              ></TechnologyCard>
+            );
           })}
         </TechContainer>
 

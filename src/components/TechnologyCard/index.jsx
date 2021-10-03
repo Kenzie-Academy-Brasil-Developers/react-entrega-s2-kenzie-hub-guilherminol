@@ -2,7 +2,9 @@ import image from "../../images/Tecnology image.png";
 import LinearProgress from "@mui/material/LinearProgress";
 import { Container } from "./style";
 import axios from "axios";
-const TechnologyCard = ({ item }) => {
+const TechnologyCard = ({ setUser, item }) => {
+  const userId = JSON.parse(window.localStorage.getItem("user")).id;
+
   const userToken = JSON.parse(window.localStorage.getItem("token"));
   const { title, status, id } = item;
   const getValue = () => {
@@ -12,13 +14,20 @@ const TechnologyCard = ({ item }) => {
   };
   const removeTech = (itemId) => {
     axios({
-      method: "DELETE", //you can set what request you want to be
+      method: "DELETE",
       url: `https://kenziehub.herokuapp.com/users/techs/${itemId}`,
       headers: {
         Authorization: "Bearer " + userToken,
       },
     })
-      .then((response) => console.log(response))
+      .then((response) => {
+        axios
+          .get(`https://kenziehub.herokuapp.com/users/${userId}`)
+          .then((response) => {
+            window.localStorage.setItem("user", JSON.stringify(response.data));
+          })
+          .then(() => setUser(JSON.parse(window.localStorage.getItem("user"))));
+      })
       .catch((err) => console.log(err));
   };
   return (

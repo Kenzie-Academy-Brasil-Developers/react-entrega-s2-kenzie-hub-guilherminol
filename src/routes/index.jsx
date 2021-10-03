@@ -23,10 +23,10 @@ const Routes = () => {
         <Login isLogged={isLogged} setIsLogged={setIsLogged}></Login>
       </Route>
       <Route exact path="/Dashboard">
-        <Dashboard isLogged={isLogged}></Dashboard>
+        <Dashboard setIsLogged={setIsLogged} isLogged={isLogged}></Dashboard>
       </Route>
       <Route path="/Dashboard/AddTech">
-        <AddTech></AddTech>
+        <AddTech isLogged={isLogged}></AddTech>
       </Route>
     </Switch>
   );

@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import background from "../../images/background.png";
-export const Header = styled.header`
+export const Headerstyle = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto;
   width: 80%;
-
+  color: #fff;
   ul {
     display: flex;
     align-items: center;
@@ -28,24 +27,5 @@ export const Header = styled.header`
   a:hover {
     text-decoration: underline;
     font-style: italic;
-  }
-`;
-export const Container = styled.div`
-  box-sizing: border-box;
-
-  background-size: cover;
-  min-height: 100vh;
-  height: fit-content;
-  background-image: url(${background});
-  color: #fff;
-`;
-export const Content = styled.main`
-  width: 60%;
-  margin: 0 auto;
-  padding: 80px 0;
-  text-align: center;
-  span {
-    color: #007aff;
-    text-shadow: 1px 0px 0.3px rgba(255, 255, 255);
   }
 `;

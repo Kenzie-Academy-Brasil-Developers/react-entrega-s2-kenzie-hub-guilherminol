@@ -25,7 +25,6 @@ const Login = ({ isLogged, setIsLogged }) => {
     api
       .post("/sessions", user)
       .then((response) => {
-        window.localStorage.clear();
         window.localStorage.setItem(
           "token",
           JSON.stringify(response.data.token)

@@ -23,6 +23,7 @@ export const Tecnologias = styled.div`
   padding: 10px;
   background-color: lightgrey;
   width: 80%;
+  min-height: 70vh;
   height: fit-content;
   margin: 0 auto 30px auto;
   border-radius: 30px;

@@ -42,13 +42,13 @@ export const Title = styled.h1`
 export const Container = styled.div`
   display: flex;
   img {
-    width: 60%;
+    width: 50%;
     height: 100vh;
     filter: grayscale(1);
   }
   .Content {
     background-color: #fff;
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
