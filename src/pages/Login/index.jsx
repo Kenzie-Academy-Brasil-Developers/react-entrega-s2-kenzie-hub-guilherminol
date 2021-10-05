@@ -13,6 +13,7 @@ const Login = ({ isLogged, setIsLogged }) => {
     email: yup.string().required("Campo Obrigatório"),
     senha: yup.string().required("Campo Obrigatório"),
   });
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -65,7 +66,9 @@ const Login = ({ isLogged, setIsLogged }) => {
 
           <Link to="/Register">Não é inscrito? Faça sua inscrição</Link>
 
-          <Button type="submit">Login</Button>
+          <Button type="submit" onClick={history.push("/Login")}>
+            Login
+          </Button>
         </Form>
       </div>
     </Container>
